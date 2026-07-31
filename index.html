@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Juan Camilo Bedoya — Diseñador gráfico y multimedia</title>
+<meta name="description" content="Diseñador gráfico y multimedia. Identidad de marca, ilustración, diseño web y postproducción de video.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --accent:#038D98;--accent-l:#3fb6bf;--accent-d:#026B74;
+    --bg:#0f1114;--card:#1c1f25;--txt:#eef1f1;--txt2:#c7ccd2;--muted:#9aa0a8;--line:#2a2e35;
+    --navbg:rgba(15,17,20,.86);--modalbg:rgba(8,9,11,.9);--modalbox:#14161b;--glow:rgba(3,141,152,.22);
+  }
+  [data-theme="light"]{
+    --bg:#f4f6f7;--card:#fff;--txt:#16181d;--txt2:#3d4147;--muted:#6d7178;--line:#e2e6e8;
+    --navbg:rgba(244,246,247,.86);--modalbg:rgba(20,24,28,.55);--modalbox:#ffffff;--glow:rgba(3,141,152,.30);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--txt);
+    -webkit-font-smoothing:antialiased;line-height:1.6;transition:background .4s,color .4s}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 26px}
+
+  /* mouse glow */
+  #smoke{position:fixed;inset:0;z-index:0;pointer-events:none}
+  nav,header,section,footer,.modal{position:relative;z-index:1}
+
+  nav{position:sticky;top:0;z-index:50;background:var(--navbg);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;height:62px;gap:22px}
+  nav .logo{font-weight:800;letter-spacing:-.02em;font-size:16px}
+  nav .logo span{color:var(--accent-l)}
+  nav .links{margin-left:auto;display:flex;gap:22px;font-size:13.5px;font-weight:500;align-items:center}
+  nav .links a{color:var(--muted);transition:.15s}
+  nav .links a:hover{color:var(--txt)}
+  nav .cta{background:var(--accent);color:#fff;padding:8px 16px;border-radius:7px;font-weight:600}
+  nav .cta:hover{background:var(--accent-l);color:#0f1114}
+  .toolbtn{background:transparent;border:1px solid var(--line);color:var(--txt);border-radius:7px;
+    height:34px;padding:0 11px;font:600 12.5px 'Inter';cursor:pointer;transition:.15s;display:flex;align-items:center;gap:5px}
+  .toolbtn:hover{border-color:var(--accent-l);color:var(--accent-l)}
+  @media(max-width:760px){nav .links a.navlink{display:none}}
+
+  header{padding:96px 0 84px;overflow:hidden}
+  .kick{font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--accent-l)}
+  header h1{font-size:clamp(38px,7vw,74px);font-weight:900;letter-spacing:-.035em;line-height:1;margin:18px 0 0}
+  header h1 em{font-style:normal;color:var(--accent-l)}
+  header .tag{margin-top:22px;font-size:clamp(15px,2vw,19px);font-weight:300;color:var(--txt2);max-width:640px}
+  header .tag b{font-weight:600;color:var(--txt)}
+  .hbtns{margin-top:34px;display:flex;gap:13px;flex-wrap:wrap}
+  .btn{padding:12px 22px;border-radius:8px;font-weight:600;font-size:14.5px;transition:.15s;cursor:pointer;border:0;font-family:inherit}
+  .btn.p{background:var(--accent);color:#fff}
+  .btn.p:hover{background:var(--accent-l);color:#0f1114}
+  .btn.s{border:1px solid var(--line);color:var(--txt);background:transparent}
+  .btn.s:hover{border-color:var(--accent-l);color:var(--accent-l)}
+
+  section{padding:70px 0;border-top:1px solid var(--line)}
+  .shead{display:flex;align-items:baseline;gap:16px;margin-bottom:34px;flex-wrap:wrap}
+  .shead h2{font-size:clamp(24px,4vw,34px);font-weight:800;letter-spacing:-.025em}
+  .shead h2 span{color:var(--accent-l)}
+  .shead p{color:var(--muted);font-size:14.5px;max-width:520px}
+  .subhd{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-l);margin:38px 0 16px}
+  .subhd:first-of-type{margin-top:0}
+
+  .wgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:860px){.wgrid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.wgrid{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:11px;overflow:hidden;position:relative;cursor:pointer;text-align:left;transition:box-shadow .25s;transform-style:preserve-3d;will-change:transform}
+  .card:hover{box-shadow:0 18px 40px rgba(0,0,0,.32)}
+  .card .imgwrap{overflow:hidden;height:220px}
+  .card .imgwrap img{width:100%;height:300px;object-fit:cover;will-change:transform}
+  .card .lab{position:absolute;left:0;right:0;bottom:0;padding:30px 14px 12px;background:linear-gradient(transparent,rgba(10,11,13,.94));font-size:14px;font-weight:600;pointer-events:none;color:#fff}
+  .card .lab span{display:block;font-size:11px;font-weight:500;color:var(--accent-l);letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px}
+  .card .plus{position:absolute;top:12px;right:12px;width:28px;height:28px;border-radius:50%;background:rgba(3,141,152,.92);color:#fff;font-size:17px;display:flex;align-items:center;justify-content:center;opacity:0;transition:.2s}
+  .card:hover .plus{opacity:1}
+
+  .vgrid{display:grid;gap:20px}
+  .vgrid.c2{grid-template-columns:repeat(2,1fr)}
+  .vgrid.c4{grid-template-columns:repeat(4,1fr)}
+  @media(max-width:860px){.vgrid.c4{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:640px){.vgrid.c2,.vgrid.c4{grid-template-columns:1fr}}
+  .vid{background:var(--card);border:1px solid var(--line);border-radius:11px;overflow:hidden}
+  .vid .frame{position:relative;width:100%;aspect-ratio:16/9;background:#000}
+  .vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .vid .meta{padding:12px 14px}
+  .vid .meta .t{font-weight:600;font-size:14px}
+  .vid .meta .d{font-size:12px;color:var(--muted);margin-top:2px}
+
+  .about{display:grid;grid-template-columns:1.3fr 1fr;gap:44px}
+  @media(max-width:760px){.about{grid-template-columns:1fr}}
+  .about p{font-size:16px;font-weight:300;color:var(--txt2);margin-bottom:16px}
+  .about p b{font-weight:600;color:var(--txt)}
+  .caps{display:flex;flex-direction:column;gap:10px}
+  .cap{background:var(--card);border-left:2.5px solid var(--accent);border-radius:0 8px 8px 0;padding:12px 15px}
+  .cap .t{font-weight:700;font-size:14px}
+  .cap .v{font-size:12.5px;color:var(--muted);margin-top:2px}
+
+  .contact{text-align:center;padding:90px 0}
+  .contact h2{font-size:clamp(28px,5vw,44px);font-weight:900;letter-spacing:-.03em}
+  .contact h2 span{color:var(--accent-l)}
+  .contact p{color:var(--muted);margin:16px auto 0;max-width:520px;font-weight:300;font-size:16px}
+  .cbtns{margin-top:30px;display:flex;gap:13px;justify-content:center;flex-wrap:wrap}
+  .more{margin-top:26px;text-align:center;color:var(--muted);font-size:14.5px;font-weight:300}
+  .more a{color:var(--accent-l);font-weight:600;border-bottom:1px solid var(--accent-d);padding-bottom:1px}
+  footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:var(--muted);font-size:12.5px}
+
+  /* modal + animation */
+  .modal{position:fixed;inset:0;z-index:100;background:var(--modalbg);backdrop-filter:blur(6px);
+    overflow-y:auto;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+  .modal.on{opacity:1;visibility:visible}
+  .modal .box{max-width:920px;margin:52px auto;background:var(--modalbox);border:1px solid var(--line);
+    border-radius:14px;overflow:hidden;transform:scale(.9) translateY(24px);opacity:0;
+    transition:transform .42s cubic-bezier(.2,.9,.25,1.15),opacity .32s}
+  .modal.on .box{transform:scale(1) translateY(0);opacity:1}
+  .modal .top{padding:26px 30px 22px;border-bottom:1px solid var(--line)}
+  .modal .top .k{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-l)}
+  .modal .top h3{font-size:26px;font-weight:800;letter-spacing:-.02em;margin:6px 0 8px}
+  .modal .top p{font-size:14.5px;font-weight:300;color:var(--txt2)}
+  .modal .top a.link{display:inline-block;margin-top:12px;color:var(--accent-l);font-weight:600;font-size:14px;border-bottom:1px solid var(--accent-d);padding-bottom:1px}
+  .modal .gallery{padding:22px 30px 34px;display:flex;flex-direction:column;gap:16px}
+  .modal .gallery img{width:100%;border-radius:8px;border:1px solid var(--line)}
+  .modal .x{position:fixed;top:22px;right:26px;width:42px;height:42px;border-radius:50%;background:var(--card);
+    border:1px solid var(--line);color:var(--txt);font-size:22px;cursor:pointer;z-index:101;line-height:1}
+  .modal .x:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+
+  /* scroll progress */
+  #progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;background:linear-gradient(90deg,var(--accent),var(--accent-l))}
+  /* reveal on scroll */
+  .reveal{opacity:0;transform:translateY(32px);transition:opacity .75s cubic-bezier(.2,.7,.2,1),transform .75s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  /* hero staggered entrance */
+  .hero-anim{opacity:0;transform:translateY(26px);animation:heroIn .9s cubic-bezier(.2,.7,.2,1) forwards}
+  @keyframes heroIn{to{opacity:1;transform:none}}
+  @media(prefers-reduced-motion:reduce){
+    .reveal,.hero-anim{opacity:1!important;transform:none!important;animation:none!important}
+    #smoke{display:none}
+  }
+  /* grain */
+  #noise{position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.23;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.45' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px 180px}
+  [data-theme="light"] #noise{opacity:.14;mix-blend-mode:multiply}
+  /* custom cursor */
+  #cdot,#cring{position:fixed;top:0;left:0;z-index:120;pointer-events:none;border-radius:50%;transform:translate(-50%,-50%)}
+  #cdot{width:7px;height:7px;background:var(--accent-l)}
+  #cring{width:34px;height:34px;border:1.5px solid var(--accent-l);opacity:.5;transition:width .18s,height .18s,opacity .18s,background .18s}
+  #cring.big{width:56px;height:56px;opacity:.9;background:rgba(63,182,191,.12)}
+  .trail{position:fixed;z-index:119;pointer-events:none;border-radius:50%;background:var(--accent-l);
+    transform:translate(-50%,-50%);animation:trailFade .7s ease-out forwards}
+  @keyframes trailFade{0%{opacity:.55;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-50%) scale(.2)}}
+  @media(hover:hover){body{cursor:none}body *{cursor:none!important}}
+  @media(hover:none){#cdot,#cring{display:none}}
+  /* stats */
+  .stats{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;padding:0 0 4px}
+  .stat{flex:1;min-width:150px;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:26px 16px}
+  .stat .n{font-size:clamp(32px,5vw,46px);font-weight:900;letter-spacing:-.03em;color:var(--accent-l);line-height:1}
+  .stat .l{font-size:12.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<canvas id="smoke"></canvas>
+<div id="noise"></div>
+<div id="cring"></div><div id="cdot"></div>
+
+<nav><div class="wrap">
+  <a href="#top" class="logo">Juan Camilo <span>Bedoya</span></a>
+  <div class="links">
+    <a class="navlink" href="#work" data-i18n="nav_work">Diseño</a>
+    <a class="navlink" href="#video" data-i18n="nav_video">Video</a>
+    <a class="navlink" href="#about" data-i18n="nav_about">Sobre mí</a>
+    <button class="toolbtn" id="langBtn">EN</button>
+    <button class="toolbtn" id="themeBtn" title="Tema"><span id="themeIcon">☀</span></button>
+    <a href="#contact" class="cta" data-i18n="nav_contact">Contacto</a>
+  </div>
+</div></nav>
+
+<header id="top"><div class="wrap">
+  <div class="kick hero-anim" style="animation-delay:.05s" data-i18n="hero_kick">Diseñador gráfico y multimedia</div>
+  <h1 class="hero-anim" style="animation-delay:.15s" data-i18n-html="hero_h1">Marca, movimiento<br>y <em>criterio</em>.</h1>
+  <p class="tag hero-anim" style="animation-delay:.3s" data-i18n-html="hero_tag">Diseño identidades, personajes, sitios web y video que tienen que funcionar en el mundo real. <b>Más de 4 años en remoto</b> para una organización de Estados Unidos, cubriendo la cadena completa: del concepto a la pieza terminada.</p>
+  <div class="hbtns hero-anim" style="animation-delay:.45s">
+    <a href="#work" class="btn p" data-i18n="hero_b1">Ver proyectos</a>
+    <a href="#contact" class="btn s" data-i18n="hero_b2">Trabajemos juntos</a>
+  </div>
+</div></header>
+
+<section id="work"><div class="wrap">
+  <div class="shead"><h2 data-i18n-html="work_h">Diseño &amp; <span>marca</span></h2><p data-i18n-html="work_p"><b>Una selección.</b> Haz clic en cualquier proyecto para verlo por dentro.</p></div>
+  <div class="wgrid" id="grid"></div>
+  <p class="more" data-i18n-html="work_more">Esto es solo una muestra. Tengo mucho más trabajo y puedo abordar proyectos que no ves aquí — <a href="#contact">escríbeme y cuéntame qué necesitas</a>.</p>
+</div></section>
+
+<section id="video"><div class="wrap">
+  <div class="shead"><h2 data-i18n-html="video_h">Video &amp; <span>motion</span></h2><p data-i18n="video_p">Edición, intros, logo reveals e infografía animada. Todo producido y editado por mí.</p></div>
+  <div class="subhd" data-i18n="video_s1">Edición de video — Dr. Tim Orr</div>
+  <div class="vgrid c2">
+    <div class="vid"><div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/IMYe-g-Ngdg" loading="lazy" allowfullscreen></iframe></div><div class="meta"><div class="t" data-i18n="v_timlong">Edición — segmento largo</div><div class="d">Dr. Tim Orr · YouTube</div></div></div>
+    <div class="vid"><div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/xOmeLVME1n4" loading="lazy" allowfullscreen></iframe></div><div class="meta"><div class="t" data-i18n="v_timint">Edición — entrevista</div><div class="d">Dr. Tim Orr · YouTube</div></div></div>
+    <div class="vid"><div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/zQx9CLWfGCU" loading="lazy" allowfullscreen></iframe></div><div class="meta"><div class="t" data-i18n="v_timop">Edición — apertura</div><div class="d">Dr. Tim Orr · YouTube</div></div></div>
+    <div class="vid"><div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/8yuT2mGnBLE" loading="lazy" allowfullscreen></iframe></div><div class="meta"><div class="t" data-i18n="v_timseg">Edición — segmento</div><div class="d">Dr. Tim Orr · YouTube</div></div></div>
+  </div>
+  <div class="subhd" data-i18n="video_s2">Intros, logo reveals e infografía</div>
+  <div class="vgrid c4">
+    <div class="vid"><div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/XdgVBKjUsNk" loading="lazy" allowfullscreen></iframe></div><div class="meta"><div class="t" data-i18n="v_intro">Intro animada</div><div class="d">One Village Group</div></div></div>
+    <div class="vid"><div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/tR26gGMSiq8" loading="lazy" allowfullscreen></iframe></div><div class="meta"><div class="t" data-i18n="v_reveal">Logo reveal</div><div class="d">One Village Group</div></div></div>
+    <div class="vid"><div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/UaDZYg-CPJI" loading="lazy" allowfullscreen></iframe></div><div class="meta"><div class="t" data-i18n="v_reveal">Logo reveal</div><div class="d">One Village Group</div></div></div>
+    <div class="vid"><div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/_uWwUZU-oZI" loading="lazy" allowfullscreen></iframe></div><div class="meta"><div class="t" data-i18n="v_reveal">Logo reveal</div><div class="d">Tommy Bourke</div></div></div>
+    <div class="vid"><div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/1RpbbVRjVN4" loading="lazy" allowfullscreen></iframe></div><div class="meta"><div class="t" data-i18n="v_reveal">Logo reveal</div><div class="d">Tommy Bourke</div></div></div>
+  </div>
+  <div class="subhd" data-i18n="video_s3">Animación de personajes e infografía</div>
+  <div class="vgrid c2">
+    <div class="vid"><div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/n-sAyWWxVMw" loading="lazy" allowfullscreen></iframe></div><div class="meta"><div class="t" data-i18n="v_charanim">Intro con personaje animado</div><div class="d">The Upendo Academy</div></div></div>
+    <div class="vid"><div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/c-yD1_63N5Q" loading="lazy" allowfullscreen></iframe></div><div class="meta"><div class="t" data-i18n="v_charanim">Intro con personaje animado</div><div class="d">The Upendo Academy</div></div></div>
+    <div class="vid"><div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/7tQTBn_JQ-A" loading="lazy" allowfullscreen></iframe></div><div class="meta"><div class="t" data-i18n="v_info">Infografía animada</div><div class="d">One Village Group</div></div></div>
+  </div>
+</div></section>
+
+<section id="about"><div class="wrap">
+  <div class="shead"><h2 data-i18n-html="about_h">Sobre <span>mí</span></h2></div>
+  <div class="about">
+    <div>
+      <p data-i18n="about_p1">Llevo más de cuatro años trabajando en remoto desde Colombia para una organización sin ánimo de lucro en Indiana, Estados Unidos. En ese tiempo he hecho de todo: identidades completas con su manual, sistemas de iconografía, personajes preparados para animación, sitios web, rotulación de vehículos y postproducción de video.</p>
+      <p data-i18n-html="about_p2">Lo que me diferencia es el rango. <b>No le paso el archivo a otra persona para que lo maquete en web, ni subcontrato la edición del video:</b> cubro la cadena completa. Para equipos pequeños eso significa menos proveedores y entregas más rápidas.</p>
+      <p data-i18n="about_p3">Soy Técnico en Postproducción Audiovisual del SENA. Trabajo en español e inglés.</p>
+    </div>
+    <div class="caps">
+      <div class="cap"><div class="t" data-i18n="cap1t">Identidad de marca</div><div class="v" data-i18n="cap1v">Marcas completas, manuales, sistemas de iconografía y gran formato</div></div>
+      <div class="cap"><div class="t" data-i18n="cap2t">Ilustración y personajes</div><div class="v" data-i18n="cap2v">Turnarounds, expresiones y despieces listos para animación</div></div>
+      <div class="cap"><div class="t" data-i18n="cap3t">Diseño web</div><div class="v" data-i18n="cap3v">Diseño de sitios, maquetación y front-end</div></div>
+      <div class="cap"><div class="t" data-i18n="cap4t">Postproducción</div><div class="v" data-i18n="cap4v">Edición, intros, efectos, arte de canal y color</div></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="contact"><div class="wrap contact">
+  <div class="kick" style="text-align:center" data-i18n="contact_kick">Hablemos</div>
+  <h2 data-i18n-html="contact_h">¿Tiene un proyecto que<br>necesite <span>resolverse</span>?</h2>
+  <p data-i18n="contact_p">Trabajo en remoto con equipos de cualquier tamaño. Puedo entrar en cualquier punto de la cadena: solo la marca, solo el video, o el proyecto completo.</p>
+  <div class="cbtns">
+    <a class="btn p" href="mailto:camilosk8forlife@gmail.com">camilosk8forlife@gmail.com</a>
+    <a class="btn s" href="https://wa.me/573505933321" target="_blank" rel="noopener">WhatsApp</a>
+    <a class="btn s" href="https://linkedin.com/in/juanbedoyajaramillo" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</div></section>
+
+<footer data-i18n="footer">© 2026 Juan Camilo Bedoya Jaramillo · Diseñador gráfico y multimedia · Colombia</footer>
+
+<div class="modal" id="modal">
+  <button class="x" id="modalX">&times;</button>
+  <div class="box">
+    <div class="top"><div class="k" id="mK"></div><h3 id="mT"></h3><p id="mD"></p>
+      <a class="link" id="mL" target="_blank" rel="noopener" style="display:none"></a></div>
+    <div class="gallery" id="mG"></div>
+  </div>
+</div>
+
+<script>
+const I18N={
+ es:{nav_work:"Diseño",nav_video:"Video",nav_about:"Sobre mí",nav_contact:"Contacto",
+  hero_kick:"Diseñador gráfico y multimedia",hero_h1:"Marca, movimiento<br>y <em>criterio</em>.",
+  hero_tag:"Diseño identidades, personajes, sitios web y video que tienen que funcionar en el mundo real. <b>Más de 4 años en remoto</b> para una organización de Estados Unidos, cubriendo la cadena completa: del concepto a la pieza terminada.",
+  hero_b1:"Ver proyectos",hero_b2:"Trabajemos juntos",
+  stat1:"Años en remoto",stat2:"Proyectos de marca",stat3:"Piezas de video",stat4:"Iconos diseñados",
+  work_h:"Diseño &amp; <span>marca</span>",work_p:"<b>Una selección.</b> Haz clic en cualquier proyecto para verlo por dentro.",
+  work_more:'Esto es solo una muestra. Tengo mucho más trabajo y puedo abordar proyectos que no ves aquí — <a href="#contact">escríbeme y cuéntame qué necesitas</a>.',
+  video_h:"Video &amp; <span>motion</span>",video_p:"Edición, intros, logo reveals e infografía animada. Todo producido y editado por mí.",
+  video_s1:"Edición de video — Dr. Tim Orr",video_s2:"Intros, logo reveals e infografía",video_s3:"Animación de personajes e infografía",
+  v_timlong:"Edición — segmento largo",v_timint:"Edición — entrevista",v_timop:"Edición — apertura",v_timseg:"Edición — segmento",
+  v_intro:"Intro animada",v_reveal:"Logo reveal",v_charanim:"Intro con personaje animado",v_info:"Infografía animada",
+  about_h:"Sobre <span>mí</span>",
+  about_p1:"Llevo más de cuatro años trabajando en remoto desde Colombia para una organización sin ánimo de lucro en Indiana, Estados Unidos. En ese tiempo he hecho de todo: identidades completas con su manual, sistemas de iconografía, personajes preparados para animación, sitios web, rotulación de vehículos y postproducción de video.",
+  about_p2:"Lo que me diferencia es el rango. <b>No le paso el archivo a otra persona para que lo maquete en web, ni subcontrato la edición del video:</b> cubro la cadena completa. Para equipos pequeños eso significa menos proveedores y entregas más rápidas.",
+  about_p3:"Soy Técnico en Postproducción Audiovisual del SENA. Trabajo en español e inglés.",
+  cap1t:"Identidad de marca",cap1v:"Marcas completas, manuales, sistemas de iconografía y gran formato",
+  cap2t:"Ilustración y personajes",cap2v:"Turnarounds, expresiones y despieces listos para animación",
+  cap3t:"Diseño web",cap3v:"Diseño de sitios, maquetación y front-end",
+  cap4t:"Postproducción",cap4v:"Edición, intros, efectos, arte de canal y color",
+  contact_kick:"Hablemos",contact_h:"¿Tiene un proyecto que<br>necesite <span>resolverse</span>?",
+  contact_p:"Trabajo en remoto con equipos de cualquier tamaño. Puedo entrar en cualquier punto de la cadena: solo la marca, solo el video, o el proyecto completo.",
+  footer:"© 2026 Juan Camilo Bedoya Jaramillo · Diseñador gráfico y multimedia · Colombia"},
+ en:{nav_work:"Design",nav_video:"Video",nav_about:"About",nav_contact:"Contact",
+  hero_kick:"Graphic &amp; multimedia designer",hero_h1:"Brand, motion<br>&amp; <em>judgment</em>.",
+  hero_tag:"I design identities, characters, websites and video that have to work in the real world. <b>4+ years remote</b> with a U.S. organization, covering the full chain: from concept to finished piece.",
+  hero_b1:"View projects",hero_b2:"Let's work together",
+  stat1:"Years remote",stat2:"Brand projects",stat3:"Video pieces",stat4:"Icons designed",
+  work_h:"Design &amp; <span>brand</span>",work_p:"<b>A selection.</b> Click any project to see it from the inside.",
+  work_more:'This is only a sample. There is plenty more, and I can take on projects you do not see here — <a href="#contact">get in touch and tell me what you need</a>.',
+  video_h:"Video &amp; <span>motion</span>",video_p:"Editing, intros, logo reveals and animated infographics. All produced and edited by me.",
+  video_s1:"Video editing — Dr. Tim Orr",video_s2:"Intros, logo reveals and infographics",video_s3:"Character animation and infographics",
+  v_timlong:"Edit — long segment",v_timint:"Edit — interview",v_timop:"Edit — opener",v_timseg:"Edit — segment",
+  v_intro:"Animated intro",v_reveal:"Logo reveal",v_charanim:"Intro with animated character",v_info:"Animated infographic",
+  about_h:"About <span>me</span>",
+  about_p1:"For over four years I've worked remotely from Colombia with a nonprofit organization based in Indiana, USA. In that time I've handled everything: complete identities with guidelines, icon systems, characters built for animation, websites, vehicle wraps and video post-production.",
+  about_p2:"What sets me apart is range. <b>I don't hand the file off to someone else to build the website, and I don't outsource the video edit:</b> I cover the full chain. For small teams that means fewer vendors and faster delivery.",
+  about_p3:"I hold a Technical Degree in Audiovisual Post-Production (SENA). I work in Spanish and English.",
+  cap1t:"Brand identity",cap1v:"Full brands, guidelines, icon systems and large format",
+  cap2t:"Illustration & characters",cap2v:"Turnarounds, expressions and animation-ready breakdowns",
+  cap3t:"Web design",cap3v:"Site design, layout and front-end",
+  cap4t:"Post-production",cap4v:"Editing, intros, effects, channel art and color",
+  contact_kick:"Let's talk",contact_h:"Got a project that<br>needs <span>solving</span>?",
+  contact_p:"I work remotely with teams of any size. I can step in at any point in the chain: the brand only, the video only, or the whole project.",
+  footer:"© 2026 Juan Camilo Bedoya Jaramillo · Graphic & multimedia designer · Colombia"}
+};
+const projects=[
+ {cover:'ag_camper_real',link:'https://www.agapewellnesscenter.org',
+  cat:{es:'Rotulación · Marca',en:'Vehicle wrap · Brand'},title:'Agape Wellness Center',
+  linkText:{es:'Ver el sitio en vivo →',en:'View the live site →'},
+  desc:{es:'Identidad visual completa de un consultorio de atención primaria sin ánimo de lucro en Indiana (EE. UU.): logo, manual de marca, paleta, tipografía e iconos. Además diseñé su sitio web, la papelería, el kit de redes y el rotulado completo de su unidad móvil, que hoy circula por Estados Unidos.',
+        en:'Complete visual identity for a nonprofit primary care clinic in Indiana, USA: logo, brand manual, palette, typography and icons. I also designed its website, stationery, social media kit and the full graphic wrap for its mobile unit, on the road across the U.S. today.'},
+  imgs:['ag_manual_cover','ag_manual_comp','ag_manual_palette','ag_camper_mockup','ag_camper_real','ag_web_fold','ag_card','ag_social']},
+ {cover:'ml_hero',cat:{es:'Identidad · Mundo narrativo',en:'Identity · Narrative world'},title:'Missions Lab',
+  desc:{es:'Identidad de marca y desarrollo de un mundo narrativo completo para un programa de entrenamiento misionero. El registro opuesto a Ágape: oscuro y de alto contraste. Incluye brandboard, hoja de estilo, una biblia de tres personajes, entornos con guion de color y una guía de renderizado de cómic.',
+        en:'Brand identity and a complete narrative world for a missions training program. The opposite register to Agape: dark and high-contrast. Includes brandboard, style sheet, a three-character bible, environments with color script and a comic rendering guide.'},
+  imgs:['ml_hero','ml_brand','ml_style','ml_bear','ml_fox','ml_env','ml_world','ml_comic']},
+ {cover:'up_chars1',cat:{es:'Diseño de personajes',en:'Character design'},title:'The Upendo Academy',
+  desc:{es:'Identidad aplicada, mascotas de marca y diseño web para una escuela en Kiminini, Kenia. Los personajes se entregaron con vistas de rotación, hojas de expresiones y despieces por capas, listos para animación; se animaron en las intros de video de la escuela.',
+        en:'Applied identity, brand mascots and web design for a school in Kiminini, Kenya. Characters delivered with turnarounds, expression sheets and layered breakdowns, ready for animation; they were animated in the school’s video intros.'},
+  imgs:['up_hero','up_logo_pink','up_chars1','up_chars2','up_web1']},
+ {cover:'ovg_iconsys',cat:{es:'Iconografía · Ilustración',en:'Iconography · Illustration'},title:'One Village Group',
+  desc:{es:'Sistema de iconos propio de más de 30 piezas, dibujado desde cero con un mismo grosor de trazo y radio de esquina. Incluye personajes de marca con turnarounds e ilustración institucional.',
+        en:'A custom icon system of more than 30 pieces, drawn from scratch with a single stroke weight and corner radius. Includes brand characters with turnarounds and institutional illustration.'},
+  imgs:['ovg_iconsys','ovg_icons','ovg_char_f','ovg_char_m','ovg_ill','ovg_bird']},
+ {cover:'tb_iso',cat:{es:'Ilustración isométrica',en:'Isometric illustration'},title:'Tommy Bourke',
+  desc:{es:'Arte de canal para músico y productor. Cada equipo del set —teclados, guitarras, batería, monitores, pedales, interfaces— fue construido en isométrico desde cero y compuesto como una sola escena.',
+        en:'Channel art for a musician and producer. Every piece of gear —keyboards, guitars, drums, monitors, pedals, interfaces— was built in isometric from scratch and composed as a single scene.'},
+  imgs:['tb_iso','tb_yt']},
+ {cover:'cali_1',cat:{es:'Papelería de evento',en:'Event stationery'},title:'Cali Bradford',
+  desc:{es:'Suite impresa para una graduación: invitación en dos versiones con tipografía script y maquetación fotográfica, más un set de más de treinta tarjetas por categorías. Delicado y pensado para impresión.',
+        en:'Print suite for a graduation: invitation in two versions with script type and photographic layout, plus a set of more than thirty categorized cards. Delicate and built for print.'},
+  imgs:['cali_1','cali_2','cali_3','cali_4']},
+ {cover:'il_medellin',cat:{es:'Ilustración personal',en:'Personal illustration'},title:{es:'Trabajo personal',en:'Personal work'},
+  desc:{es:'Composiciones que combinan fotografía real con personajes ilustrados, retrato ilustrado, cabeceras y diseño para apparel. El espacio donde exploro estilo propio.',
+        en:'Composites blending real photography with illustrated characters, illustrated portraiture, headers and apparel design. Where I explore a voice of my own.'},
+  imgs:['il_medellin','il_nashville','il_kiss','il_tetra','il_gmgn']},
+];
+let lang='es';
+function t(v){return typeof v==='object'?(v[lang]||v.es):v;}
+function applyLang(){
+  document.documentElement.lang=lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(I18N[lang][k]!=null)el.textContent=I18N[lang][k];});
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{const k=el.getAttribute('data-i18n-html');if(I18N[lang][k]!=null)el.innerHTML=I18N[lang][k];});
+  document.getElementById('langBtn').textContent = lang==='es'?'EN':'ES';
+  buildGrid();
+}
+const grid=document.getElementById('grid');
+function buildGrid(){
+  grid.innerHTML='';
+  projects.forEach((p,i)=>{
+    const c=document.createElement('button');c.className='card reveal';
+    c.innerHTML=`<div class="imgwrap"><img src="img/${p.cover}.jpg" alt="${t(p.title)}" loading="lazy"></div><div class="plus">+</div><div class="lab"><span>${t(p.cat)}</span>${t(p.title)}</div>`;
+    c.onclick=()=>openM(i);grid.appendChild(c);
+  });
+  initReveal();initTilt();
+}
+const modal=document.getElementById('modal');
+function openM(i){
+  const p=projects[i];
+  document.getElementById('mK').textContent=t(p.cat);
+  document.getElementById('mT').textContent=t(p.title);
+  document.getElementById('mD').textContent=t(p.desc);
+  const L=document.getElementById('mL');
+  if(p.link){L.href=p.link;L.textContent=t(p.linkText);L.style.display='inline-block';}else{L.style.display='none';}
+  const g=document.getElementById('mG');g.innerHTML='';
+  p.imgs.forEach(n=>{const im=document.createElement('img');im.src='img/'+n+'.jpg';im.loading='lazy';g.appendChild(im);});
+  modal.classList.add('on');document.body.style.overflow='hidden';modal.scrollTop=0;
+}
+function closeM(){modal.classList.remove('on');document.body.style.overflow='';}
+document.getElementById('modalX').onclick=closeM;
+modal.onclick=e=>{if(e.target===modal)closeM();};
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM();});
+document.getElementById('langBtn').onclick=()=>{lang=lang==='es'?'en':'es';applyLang();};
+
+// theme
+const themeBtn=document.getElementById('themeBtn'),themeIcon=document.getElementById('themeIcon');
+function setTheme(mode){document.documentElement.setAttribute('data-theme',mode);themeIcon.textContent=mode==='light'?'☾':'☀';}
+let theme='dark';setTheme(theme);
+themeBtn.onclick=()=>{theme=theme==='dark'?'light':'dark';setTheme(theme);};
+
+// ===== real fractal fog revealed by the cursor =====
+(function(){
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  const cv=document.getElementById('smoke'),cx=cv.getContext('2d');
+  const off=document.createElement('canvas'),ox=off.getContext('2d');
+  let W,H,OS;
+  // value-noise fractal -> teal fog texture
+  function hash(ix,iy){let n=(ix*374761393+iy*668265263)|0;n=(n^(n>>13))*1274126177|0;return ((n^(n>>16))>>>0)/4294967295;}
+  function vnoise(x,y){const ix=Math.floor(x),iy=Math.floor(y),fx=x-ix,fy=y-iy;
+    const u=fx*fx*(3-2*fx),v=fy*fy*(3-2*fy);
+    const a=hash(ix,iy),b=hash(ix+1,iy),c=hash(ix,iy+1),d=hash(ix+1,iy+1);
+    return a*(1-u)*(1-v)+b*u*(1-v)+c*(1-u)*v+d*u*v;}
+  function fbm(x,y){let s=0,a=.5,f=1;for(let o=0;o<5;o++){s+=a*vnoise(x*f,y*f);a*=.5;f*=2;}return s;}
+  function makeFog(bw,bh,seed){
+    const cell=4,cols=Math.ceil(bw/cell),rows=Math.ceil(bh/cell);
+    const lc=document.createElement('canvas');lc.width=cols;lc.height=rows;
+    const lx=lc.getContext('2d'),img=lx.createImageData(cols,rows),D=img.data;
+    for(let j=0;j<rows;j++)for(let i=0;i<cols;i++){
+      let n=fbm(i*.011+seed,j*.011+seed);      // large billowing scale
+      n=(n-.33)/.34; n=n<0?0:n>1?1:n; n=n*n*(3-2*n);   // contrast + smooth
+      const k=(j*cols+i)*4;D[k]=63;D[k+1]=182;D[k+2]=191;D[k+3]=n*255;
+    }
+    lx.putImageData(img,0,0);
+    const fc=document.createElement('canvas');fc.width=bw;fc.height=bh;
+    const fx=fc.getContext('2d');fx.imageSmoothingEnabled=true;fx.drawImage(lc,0,0,bw,bh);
+    return fc;
+  }
+  let fogA,fogB;
+  function build(){
+    W=cv.width=off.width=innerWidth;H=cv.height=off.height=innerHeight;
+    OS=Math.round(Math.max(W,H)*.22);
+    fogA=makeFog(W+OS*2,H+OS*2,11.3);fogB=makeFog(W+OS*2,H+OS*2,57.9);
+  }
+  build();let rz;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(build,200);});
+  let px=innerWidth/2,py=innerHeight*.3,ptx=px,pty=py;
+  addEventListener('mousemove',e=>{ptx=e.clientX;pty=e.clientY;});
+  const RAD=270;
+  function drawFog(g,t){
+    g.drawImage(fogA,-OS+Math.sin(t/13000)*OS*.7,-OS+Math.cos(t/16000)*OS*.6);
+    g.drawImage(fogB,-OS+Math.cos(t/17000)*OS*.6,-OS+Math.sin(t/14500)*OS*.7);
+  }
+  function frame(t){
+    px+=(ptx-px)*.14;py+=(pty-py)*.14;
+    // pass 1 — faint living fog everywhere
+    cx.clearRect(0,0,W,H);cx.globalCompositeOperation='source-over';cx.globalAlpha=.24;
+    drawFog(cx,t);cx.globalAlpha=1;
+    // pass 2 — cursor light reveals fog more strongly around it
+    ox.clearRect(0,0,W,H);ox.globalCompositeOperation='source-over';ox.globalAlpha=1;
+    drawFog(ox,t);
+    ox.globalCompositeOperation='destination-in';
+    const lg=ox.createRadialGradient(px,py,0,px,py,RAD);
+    lg.addColorStop(0,'rgba(0,0,0,1)');lg.addColorStop(.55,'rgba(0,0,0,.55)');lg.addColorStop(1,'rgba(0,0,0,0)');
+    ox.fillStyle=lg;ox.fillRect(px-RAD,py-RAD,RAD*2,RAD*2);
+    cx.globalCompositeOperation='lighter';cx.drawImage(off,0,0);
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+
+// reveal on scroll
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+let RO;
+function initReveal(){
+  if(reduce){document.querySelectorAll('.reveal').forEach(e=>e.classList.add('in'));return;}
+  if(!RO)RO=new IntersectionObserver((es)=>{es.forEach(en=>{if(en.isIntersecting){const el=en.target;el.classList.add('in');RO.unobserve(el);setTimeout(()=>{el.style.transition='';el.style.transitionDelay='';},900);}});},{threshold:.14});
+  document.querySelectorAll('.reveal:not(.in)').forEach((e,i)=>{e.style.transitionDelay=(Math.min(i%3,3)*70)+'ms';RO.observe(e);});
+}
+// tag static blocks as reveal
+document.querySelectorAll('.shead,.subhd,.vid,.cap,.about>div,.more,.contact>*,.stat').forEach(e=>e.classList.add('reveal'));
+
+// custom cursor
+if(matchMedia('(hover:hover)').matches){
+  const dot=document.getElementById('cdot'),ring=document.getElementById('cring');
+  let rx=innerWidth/2,ry=innerHeight/2,mx=rx,my=ry;
+  addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+  (function cl(){rx+=(mx-rx)*.2;ry+=(my-ry)*.2;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(cl);})();
+  document.addEventListener('mouseover',e=>{if(e.target.closest('a,button,.card,iframe'))ring.classList.add('big');});
+  document.addEventListener('mouseout',e=>{if(e.target.closest('a,button,.card,iframe'))ring.classList.remove('big');});
+}
+
+// tilt 3D on cards
+function initTilt(){
+  if(reduce)return;
+  document.querySelectorAll('.card').forEach(card=>{
+    if(card._tilt)return;card._tilt=1;
+    card.addEventListener('mousemove',e=>{
+      const r=card.getBoundingClientRect();
+      const px=(e.clientX-r.left)/r.width-.5, py=(e.clientY-r.top)/r.height-.5;
+      card.style.transform=`perspective(680px) rotateY(${px*20}deg) rotateX(${-py*20}deg) translateY(-9px) scale(1.02)`;
+    });
+    card.addEventListener('mouseleave',()=>{card.style.transform='';});
+  });
+}
+
+// parallax on card cover images + scroll progress
+const doc=document.documentElement;
+function onScroll(){
+  const h=doc.scrollHeight-innerHeight;
+  document.getElementById('progress').style.width=(h>0?(scrollY/h*100):0)+'%';
+  if(reduce)return;
+  document.querySelectorAll('.card .imgwrap img').forEach(img=>{
+    const r=img.getBoundingClientRect();
+    if(r.bottom<0||r.top>innerHeight)return;
+    const p=((r.top+r.height/2)-innerHeight/2)/innerHeight; // -0.5..0.5
+    img.style.transform=`translateY(${(-p*44).toFixed(1)}px)`;
+  });
+}
+addEventListener('scroll',()=>requestAnimationFrame(onScroll),{passive:true});
+addEventListener('resize',onScroll);
+
+applyLang();
+initReveal();
+onScroll();
+</script>
+</body>
+</html>
