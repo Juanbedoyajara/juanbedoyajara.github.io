@@ -38,8 +38,8 @@
   nav .links{margin-left:auto;display:flex;gap:22px;font-size:13.5px;font-weight:500;align-items:center}
   nav .links a{color:var(--muted);transition:.15s}
   nav .links a:hover{color:var(--txt)}
-  nav .cta{background:var(--accent);color:#fff;padding:8px 16px;border-radius:7px;font-weight:600}
-  nav .cta:hover{background:var(--accent-l);color:#0f1114}
+  nav .links a.cta{background:var(--accent);color:#fff;padding:8px 16px;border-radius:7px;font-weight:600}
+  nav .links a.cta:hover{background:#16181d;color:#fff}
   .toolbtn{background:transparent;border:1px solid var(--line);color:var(--txt);border-radius:7px;
     height:34px;padding:0 11px;font:600 12.5px 'Inter';cursor:pointer;transition:.15s;display:flex;align-items:center;gap:5px}
   .toolbtn:hover{border-color:var(--accent-l);color:var(--accent-l)}
@@ -121,8 +121,10 @@
   .modal .top h3{font-size:26px;font-weight:800;letter-spacing:-.02em;margin:6px 0 8px}
   .modal .top p{font-size:14.5px;font-weight:300;color:var(--txt2)}
   .modal .top a.link{display:inline-block;margin-top:12px;color:var(--accent-l);font-weight:600;font-size:14px;border-bottom:1px solid var(--accent-d);padding-bottom:1px}
-  .modal .gallery{padding:22px 30px 34px;display:flex;flex-direction:column;gap:16px}
-  .modal .gallery img{width:100%;border-radius:8px;border:1px solid var(--line)}
+  .modal .gallery{padding:22px 30px 34px;display:flex;flex-direction:column;gap:20px}
+  .modal .mfig{margin:0}
+  .modal .mfig img{width:100%;border-radius:8px;border:1px solid var(--line);display:block}
+  .modal .mfig figcaption{margin-top:8px;font-size:12.5px;color:var(--muted);text-align:center;letter-spacing:.01em}
   .modal .x{position:fixed;top:22px;right:26px;width:42px;height:42px;border-radius:50%;background:var(--card);
     border:1px solid var(--line);color:var(--txt);font-size:22px;cursor:pointer;z-index:101;line-height:1}
   .modal .x:hover{background:var(--accent);border-color:var(--accent);color:#fff}
@@ -148,6 +150,9 @@
   #cdot{width:7px;height:7px;background:var(--accent-l)}
   #cring{width:34px;height:34px;border:1.5px solid var(--accent-l);opacity:.5;transition:width .18s,height .18s,opacity .18s,background .18s}
   #cring.big{width:56px;height:56px;opacity:.9;background:rgba(63,182,191,.12)}
+  [data-theme="light"] #cdot{background:var(--accent-d)}
+  [data-theme="light"] #cring{border-color:var(--accent-d);opacity:.7}
+  [data-theme="light"] #cring.big{background:rgba(2,107,116,.12)}
   .trail{position:fixed;z-index:119;pointer-events:none;border-radius:50%;background:var(--accent-l);
     transform:translate(-50%,-50%);animation:trailFade .7s ease-out forwards}
   @keyframes trailFade{0%{opacity:.55;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-50%) scale(.2)}}
@@ -311,31 +316,31 @@ const projects=[
   linkText:{es:'Ver el sitio en vivo →',en:'View the live site →'},
   desc:{es:'Identidad visual completa de un consultorio de atención primaria sin ánimo de lucro en Indiana (EE. UU.): logo, manual de marca, paleta, tipografía e iconos. Además diseñé su sitio web, la papelería, el kit de redes y el rotulado completo de su unidad móvil, que hoy circula por Estados Unidos.',
         en:'Complete visual identity for a nonprofit primary care clinic in Indiana, USA: logo, brand manual, palette, typography and icons. I also designed its website, stationery, social media kit and the full graphic wrap for its mobile unit, on the road across the U.S. today.'},
-  imgs:['ag_manual_cover','ag_manual_comp','ag_manual_palette','ag_camper_mockup','ag_camper_real','ag_web_fold','ag_card','ag_social']},
+  imgs:[['ag_manual_cover',{es:'Manual de marca — portada',en:'Brand manual — cover'}],['ag_manual_comp',{es:'Construcción del logo',en:'Logo construction'}],['ag_manual_palette',{es:'Paleta cromática',en:'Color palette'}],['ag_camper_mockup',{es:'Propuesta de rotulado — mockup 3D',en:'Wrap proposal — 3D mockup'}],['ag_camper_real',{es:'Resultado real — unidad en circulación',en:'Final result — unit on the road'}],['ag_web_fold',{es:'Diseño del sitio web',en:'Website design'}],['ag_card',{es:'Papelería',en:'Stationery'}],['ag_social',{es:'Kit de piezas para redes',en:'Social media kit'}]]},
  {cover:'ml_hero',cat:{es:'Identidad · Mundo narrativo',en:'Identity · Narrative world'},title:'Missions Lab',
   desc:{es:'Identidad de marca y desarrollo de un mundo narrativo completo para un programa de entrenamiento misionero. El registro opuesto a Ágape: oscuro y de alto contraste. Incluye brandboard, hoja de estilo, una biblia de tres personajes, entornos con guion de color y una guía de renderizado de cómic.',
         en:'Brand identity and a complete narrative world for a missions training program. The opposite register to Agape: dark and high-contrast. Includes brandboard, style sheet, a three-character bible, environments with color script and a comic rendering guide.'},
-  imgs:['ml_hero','ml_brand','ml_style','ml_bear','ml_fox','ml_env','ml_world','ml_comic']},
+  imgs:[['ml_hero',{es:'Arte clave del equipo',en:'Team key art'}],['ml_brand',{es:'Brandboard — logo, paleta y tipografía',en:'Brandboard — logo, palette & type'}],['ml_style',{es:'Hoja maestra de estilo visual',en:'Visual style master sheet'}],['ml_bear',{es:'Ficha de personaje — Oso',en:'Character sheet — Bear'}],['ml_fox',{es:'Ficha de personaje — Zorro',en:'Character sheet — Fox'}],['ml_env',{es:'Entornos y guion de color',en:'Environments & color script'}],['ml_world',{es:'Documento de mundo',en:'World document'}],['ml_comic',{es:'Guía de renderizado de cómic',en:'Comic rendering guide'}]]},
  {cover:'up_chars1',cat:{es:'Diseño de personajes',en:'Character design'},title:'The Upendo Academy',
   desc:{es:'Identidad aplicada, mascotas de marca y diseño web para una escuela en Kiminini, Kenia. Los personajes se entregaron con vistas de rotación, hojas de expresiones y despieces por capas, listos para animación; se animaron en las intros de video de la escuela.',
         en:'Applied identity, brand mascots and web design for a school in Kiminini, Kenya. Characters delivered with turnarounds, expression sheets and layered breakdowns, ready for animation; they were animated in the school’s video intros.'},
-  imgs:['up_hero','up_logo_pink','up_chars1','up_chars2','up_web1']},
+  imgs:[['up_hero',{es:'Pieza de campaña',en:'Campaign asset'}],['up_logo_pink',{es:'Logo — versión principal',en:'Logo — primary version'}],['up_chars1',{es:'Personaje 1 — turnaround y despiece para animación',en:'Character 1 — turnaround & breakdown for animation'}],['up_chars2',{es:'Personaje 2 — turnaround y despiece para animación',en:'Character 2 — turnaround & breakdown for animation'}],['up_web1',{es:'Diseño del sitio web',en:'Website design'}]]},
  {cover:'ovg_iconsys',cat:{es:'Iconografía · Ilustración',en:'Iconography · Illustration'},title:'One Village Group',
   desc:{es:'Sistema de iconos propio de más de 30 piezas, dibujado desde cero con un mismo grosor de trazo y radio de esquina. Incluye personajes de marca con turnarounds e ilustración institucional.',
         en:'A custom icon system of more than 30 pieces, drawn from scratch with a single stroke weight and corner radius. Includes brand characters with turnarounds and institutional illustration.'},
-  imgs:['ovg_iconsys','ovg_icons','ovg_char_f','ovg_char_m','ovg_ill','ovg_bird']},
+  imgs:[['ovg_iconsys',{es:'Sistema de iconos con nomenclatura',en:'Icon system with naming'}],['ovg_icons',{es:'Detalle de trazo',en:'Stroke detail'}],['ovg_char_f',{es:'Personaje de marca — femenino',en:'Brand character — female'}],['ovg_char_m',{es:'Personaje de marca — masculino',en:'Brand character — male'}],['ovg_ill',{es:'Ilustración institucional',en:'Institutional illustration'}],['ovg_bird',{es:'Símbolo de marca',en:'Brand symbol'}]]},
  {cover:'tb_iso',cat:{es:'Ilustración isométrica',en:'Isometric illustration'},title:'Tommy Bourke',
   desc:{es:'Arte de canal para músico y productor. Cada equipo del set —teclados, guitarras, batería, monitores, pedales, interfaces— fue construido en isométrico desde cero y compuesto como una sola escena.',
         en:'Channel art for a musician and producer. Every piece of gear —keyboards, guitars, drums, monitors, pedals, interfaces— was built in isometric from scratch and composed as a single scene.'},
-  imgs:['tb_iso','tb_yt']},
+  imgs:[['tb_iso',{es:'Ilustración isométrica — arte de canal',en:'Isometric illustration — channel art'}],['tb_yt',{es:'Versión fotográfica del arte de canal',en:'Photographic version of the channel art'}]]},
  {cover:'cali_1',cat:{es:'Papelería de evento',en:'Event stationery'},title:'Cali Bradford',
   desc:{es:'Suite impresa para una graduación: invitación en dos versiones con tipografía script y maquetación fotográfica, más un set de más de treinta tarjetas por categorías. Delicado y pensado para impresión.',
         en:'Print suite for a graduation: invitation in two versions with script type and photographic layout, plus a set of more than thirty categorized cards. Delicate and built for print.'},
-  imgs:['cali_1','cali_2','cali_3','cali_4']},
+  imgs:[['cali_1',{es:'Invitación — versión A',en:'Invitation — version A'}],['cali_2',{es:'Invitación — versión B',en:'Invitation — version B'}],['cali_3',{es:'Set de tarjetas por categorías',en:'Categorized card set'}],['cali_4',{es:'Tarjeta de instrucciones',en:'Instructions card'}]]},
  {cover:'il_medellin',cat:{es:'Ilustración personal',en:'Personal illustration'},title:{es:'Trabajo personal',en:'Personal work'},
   desc:{es:'Composiciones que combinan fotografía real con personajes ilustrados, retrato ilustrado, cabeceras y diseño para apparel. El espacio donde exploro estilo propio.',
         en:'Composites blending real photography with illustrated characters, illustrated portraiture, headers and apparel design. Where I explore a voice of my own.'},
-  imgs:['il_medellin','il_nashville','il_kiss','il_tetra','il_gmgn']},
+  imgs:[['il_medellin',{es:'Medellín — composición fotográfica ilustrada',en:'Medellín — illustrated photo composite'}],['il_nashville',{es:'Nashville — misma serie',en:'Nashville — same series'}],['il_kiss',{es:'Retrato ilustrado',en:'Illustrated portrait'}],['il_tetra',{es:'Cabecera ilustrada',en:'Illustrated header'}],['il_gmgn',{es:'Diseño para apparel',en:'Apparel design'}]]},
 ];
 let lang='es';
 function t(v){return typeof v==='object'?(v[lang]||v.es):v;}
@@ -365,7 +370,13 @@ function openM(i){
   const L=document.getElementById('mL');
   if(p.link){L.href=p.link;L.textContent=t(p.linkText);L.style.display='inline-block';}else{L.style.display='none';}
   const g=document.getElementById('mG');g.innerHTML='';
-  p.imgs.forEach(n=>{const im=document.createElement('img');im.src='img/'+n+'.jpg';im.loading='lazy';g.appendChild(im);});
+  p.imgs.forEach(it=>{
+    const fn=Array.isArray(it)?it[0]:it, cap=Array.isArray(it)?t(it[1]):'';
+    const fig=document.createElement('figure');fig.className='mfig';
+    const im=document.createElement('img');im.src='img/'+fn+'.jpg';im.loading='lazy';fig.appendChild(im);
+    if(cap){const fc=document.createElement('figcaption');fc.textContent=cap;fig.appendChild(fc);}
+    g.appendChild(fig);
+  });
   modal.classList.add('on');document.body.style.overflow='hidden';modal.scrollTop=0;
 }
 function closeM(){modal.classList.remove('on');document.body.style.overflow='';}
@@ -389,7 +400,7 @@ themeBtn.onclick=()=>{theme=theme==='dark'?'light':'dark';setTheme(theme);};
   const vsrc='attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
   const fsrc=[
   'precision highp float;',
-  'uniform vec2 u_res;uniform float u_time;uniform vec2 u_mouse;uniform float u_spd;uniform vec2 u_dir;',
+  'uniform vec2 u_res;uniform float u_time;uniform vec2 u_mouse;uniform float u_spd;uniform vec2 u_dir;uniform float u_dark;',
   'float hash(vec2 p){p=fract(p*vec2(123.34,456.21));p+=dot(p,p+45.32);return fract(p.x*p.y);}',
   'float vn(vec2 p){vec2 i=floor(p),f=fract(p);vec2 u=f*f*(3.-2.*f);',
   ' float a=hash(i),b=hash(i+vec2(1,0)),c=hash(i+vec2(0,1)),d=hash(i+vec2(1,1));',
@@ -411,10 +422,10 @@ themeBtn.onclick=()=>{theme=theme==='dark'?'light':'dark';setTheme(theme);};
   ' float f=fbm(sp*2.6 + vec2(t*0.5,t*0.28));',
   ' f=smoothstep(0.30,0.78,f);',
   ' float hole=smoothstep(0.,150.+u_spd*6.,d);',
-  ' float ambient=0.09;',
-  ' float light=infl*0.32;',
-  ' float alpha=f*(ambient+light)*hole;',
-  ' vec3 col=vec3(0.247,0.714,0.749);',
+  ' float ambient=mix(0.26,0.09,u_dark);',
+  ' float light=infl*mix(0.13,0.32,u_dark);',
+  ' float alpha=f*(ambient+light)*hole*mix(2.6,1.0,u_dark);',
+  ' vec3 col=mix(vec3(0.011,0.42,0.455),vec3(0.247,0.714,0.749),u_dark);',
   ' gl_FragColor=vec4(col,clamp(alpha,0.,1.));',
   '}'].join('\n');
   function sh(type,src){const s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);
@@ -427,7 +438,7 @@ themeBtn.onclick=()=>{theme=theme==='dark'?'light':'dark';setTheme(theme);};
   const loc=gl.getAttribLocation(pr,'p');gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
   gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);
   const uRes=gl.getUniformLocation(pr,'u_res'),uTime=gl.getUniformLocation(pr,'u_time'),
-        uMouse=gl.getUniformLocation(pr,'u_mouse'),uSpd=gl.getUniformLocation(pr,'u_spd'),uDir=gl.getUniformLocation(pr,'u_dir');
+        uMouse=gl.getUniformLocation(pr,'u_mouse'),uSpd=gl.getUniformLocation(pr,'u_spd'),uDir=gl.getUniformLocation(pr,'u_dir'),uDark=gl.getUniformLocation(pr,'u_dark');
   let W,H,DPR=Math.min(devicePixelRatio||1,1.5);
   function resize(){W=cv.width=innerWidth*DPR;H=cv.height=innerHeight*DPR;cv.style.width=innerWidth+'px';cv.style.height=innerHeight+'px';gl.viewport(0,0,W,H);}
   resize();addEventListener('resize',resize);
@@ -444,6 +455,7 @@ themeBtn.onclick=()=>{theme=theme==='dark'?'light':'dark';setTheme(theme);};
     gl.uniform2f(uMouse,mx*DPR,my*DPR);
     gl.uniform1f(uSpd,sSpd*DPR);
     gl.uniform2f(uDir,dirx,diry);
+    gl.uniform1f(uDark,document.documentElement.getAttribute('data-theme')==='light'?0.:1.);
     gl.drawArrays(gl.TRIANGLES,0,3);
     requestAnimationFrame(frame);
   }
