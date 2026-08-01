@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Juan Camilo Bedoya — Diseñador gráfico y multimedia</title>
 <meta name="description" content="Diseñador gráfico y multimedia. Identidad de marca, ilustración, diseño web y postproducción de video.">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -404,7 +407,7 @@ themeBtn.onclick=()=>{theme=theme==='dark'?'light':'dark';setTheme(theme);};
   ' vec2 disp = dir*(infl*infl*(55.+u_spd*4.)) + u_dir*(infl*u_spd*2.2);',
   ' vec2 sampleFrag = frag - disp;',
   ' vec2 sp = sampleFrag/sc;',
-  ' float t=u_time*0.045;',
+  ' float t=u_time*0.2;',
   ' float f=fbm(sp*2.6 + vec2(t*0.5,t*0.28));',
   ' f=smoothstep(0.30,0.78,f);',
   ' float hole=smoothstep(0.,150.+u_spd*6.,d);',
